@@ -1,0 +1,9 @@
+node_modules/
+.vscode
+/src/.env
+/src/public/upload/*.jpg
+/src/public/upload/*.png
+/src/public/upload/*.jpeg
+/src/public/upload/temp/*
+
+

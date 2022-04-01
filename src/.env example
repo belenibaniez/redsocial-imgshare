@@ -1,0 +1,5 @@
+PORT=3000
+HOST=localhost
+
+
+MONGODB_CNN= 'mongodb://usuario:password@host:port/bd'
