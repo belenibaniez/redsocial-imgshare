@@ -7,7 +7,9 @@ const {Image, Comment}=require('../models')
 const {sidebar}=require('../helpers')
 const getImage = async(req,res)=>{
     let viewModel= {image:{}, comments:{}}
-
+    if(req.cookies.token){
+        viewModel.token=req.cookies.token
+    }
     const image=await Image.findOne({filename:{$regex:req.params.image_id}});
     if (image){
         image.views=image.views+1;
@@ -17,7 +19,6 @@ const getImage = async(req,res)=>{
         const comments=await Comment.find({image_id:image._id}).sort({timestamp:-1});
         viewModel.comments=comments
         viewModel=await sidebar(viewModel)
-
         res.render('image',viewModel);
 
     }else{

@@ -4,18 +4,20 @@ const { boolean } = require('webidl-conversions')
 const { Schema , ObjectId}=mongoose
 
 const UserSchema=new Schema({
-    nombre:{type:String},
-    apellido:{type:String},
+    name:{type:String},
+    lastname:{type:String},
+    gravatar:{type:String},
     nick:{type:String},
     email:{type:String},
-    pasword:{type:String},
+    password:{type:String},
     perfil:{type:String},
-    images:[{type:ObjectId,
-    ref:"Image" }],
-    state:{
-        type:boolean,
+    states:{
+        type:Boolean,
         default:true
-    }
+    },
+    images:[{type:ObjectId,
+    ref:"Image" }]
+   
 })
 
 
