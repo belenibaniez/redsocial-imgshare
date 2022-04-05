@@ -6,6 +6,7 @@ const  path = require('path');
 const exphbs=require('express-handlebars');
 const erroHandler=require('errorhandler')
 const Handlebars = require('handlebars')
+var cookieParser = require('cookie-parser')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 class Server{
@@ -13,6 +14,9 @@ class Server{
         this.app =express();
         this.homePath=''
         this.imagePath='/images'
+        this.userPath='/users'
+        this.authPath='/auth'
+
         this.app.set('view engine','.hbs')
         this.app.set('views', path.join(__dirname, '../views'));
 
@@ -23,13 +27,7 @@ class Server{
             handlebars: allowInsecurePrototypeAccess(Handlebars)
 
           }));
-
-
-
         this.port= process.env.PORT
-
-     
-
 
         //Middlewares
 
@@ -48,8 +46,9 @@ class Server{
 
         this.app.use(cors());
         this.app.use('/public',express.static(path.join(__dirname,'../public')));
-        this.app.use(express.urlencoded({ extended: true })); //para recibir datos que vienen desde formularios
+        this.app.use(express.urlencoded({ extended: false })); //para recibir datos que vienen desde formularios
         this.app.use(express.json());
+        this.app.use(cookieParser());
 
       
     }
@@ -60,6 +59,8 @@ class Server{
     routes(){
         this.app.use( this.homePath, require('../routes/home'))
         this.app.use( this.imagePath, require('../routes/image'))
+        this.app.use( this.userPath, require('../routes/user'))
+        this.app.use( this.authPath, require('../routes/auth'))
 
                
 

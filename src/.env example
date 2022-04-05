@@ -1,5 +1,6 @@
 PORT=3000
 HOST=localhost
+SECRET_KEY='FRASE_SECRETA'
 
 
 MONGODB_CNN= 'mongodb://usuario:password@host:port/bd'

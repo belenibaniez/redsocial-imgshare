@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="/"><img width="70%" src="/public/images/imgshare-logo.png" alt="ImgShare"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 me-4 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="#">Imagenes</a>
+        </li>
+
+        {{#if token}}
+        
+           <li class="nav-item me-3">
+          <a class="nav-link" href="/auth/login">Mis Imagenes</a>
+        </li>
+           <li class="nav-item me-3">
+
+             <div class="dropdown">
+    <img class="btn btn-secondary dropdown-toggle" src="/public/images/perfil.png" style="width: 3rem;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </img>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">My images</a></li>
+      <li><a class="dropdown-item" href="#">My stats</a></li>
+      <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+    </ul>
+  </div>
+
+
+
+        </li>
+        {{else}}
+        <li class="nav-item me-3">
+          <a class="btn btn-success" href="/auth/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary" href="/auth/register">Register</a>
+        </li>
+        {{/if}}
+
+        
+
+      
+      </ul>
+     
+    </div>
+  </div>
+</nav>
